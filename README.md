@@ -9,8 +9,8 @@ Table of contents
 - [Salesforce Package Installation](#Salesforce-Package-Installation)
 - [Data-Cloud Configuration](#Data-Cloud-Configuration)
 - [Commerce Cloud Configuration](#Commerce-Cloud-Configuration)
-- [Post-Deployment Instructions](#Post-Deployment-Instructions)
-- [Optional installation instructions](#Optional-installation-instructions)
+- [Connect and Create Sample data](#Connect-and-Create-Sample-data)
+- [Finish Configuration](#Finish-Configuration)
 
 # Pre-Deployment Instructions
 [1 - Installation Guide.docx](https://docs.google.com/document/d/1CEHMg96Ba2hVMtoYgfuVbRBUbRL4r5gy/edit)
@@ -20,6 +20,10 @@ Table of contents
 [Data-Cloud Configuration](https://docs.google.com/document/d/18pIB7oYDE-9EJNZyaVQAomfM3pRodaVW/edit#heading=h.gjdgxs)
 # Commerce Cloud Configuration
 [Commerce Cloud Configuration](https://docs.google.com/document/d/1h0OwE5A1WzPKRNt2YOEXK-ZfOqxQq4cz/edit)
+# Connect and Create Sample data
+[Connect and Create Sample data](https://docs.google.com/document/d/1sBY1Ij7zMJq8H7b8c2rbdQvcYSXwaEyj/edit)
+# Finish Configuration
+[Finish Configuration](https://docs.google.com/document/d/1CCTTkuCF56KYajjnVsvAzvvKbEHP5uDu/edit)
 
 ### Requirements
 #### Environment
