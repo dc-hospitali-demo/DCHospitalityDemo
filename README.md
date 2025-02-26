@@ -28,7 +28,8 @@ Table of contents
 ### Requirements
 #### Environment
 To support the Sunshine Resorts app, you can either create a new Salesforce Org or use an existing one, provided it includes the following features and licenses:
-**Requirements
+
+**Requirements**
    - Licenses Required
    - Data Cloud
    - Loyalty Cloud
@@ -38,7 +39,7 @@ To support the Sunshine Resorts app, you can either create a new Salesforce Org 
    - Commerce Cloud
    - Marketing Cloud
    - MuleSoft (Optional)
-**Features Required
+**Features Required**
    - Service Agent
    - Einstein Agent
    - Copilot
