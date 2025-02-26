@@ -12,7 +12,9 @@ Table of contents
 [3. Data-Cloud Configuration](#Data-Cloud-Configuration)
 
 [4. Commerce Cloud Configuration](#Commerce-Cloud-Configuration)
+
 [5. Connect and Create Sample data](#Connect-and-Create-Sample-data)
+
 [6. Finish Configuration](#Finish-Configuration)
 
 # Pre-Deployment Instructions
