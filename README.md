@@ -5,7 +5,7 @@ The Sunshine Trail app showcases **Data Cloud**, **Agents** and **Prompts**.
 
 Table of contents
 =======================
-- [1 - Installation Guide.docx](#Pre-Deployment-Instructions)
+- [Installation Guide.docx](#Pre-Deployment-Instructions)
 - [Data-Cloud Setup](#Data-Cloud-Setup)
 - [Installation](#Installation)
 - [Post-Deployment Instructions](#Post-Deployment-Instructions)
