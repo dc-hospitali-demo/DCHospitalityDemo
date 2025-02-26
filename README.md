@@ -7,7 +7,7 @@ Table of contents
 =======================
 - [Installation Guide.docx](#Pre-Deployment-Instructions)
 - [Salesforce Package Installation](#Salesforce-Package-Installation)
-- [Data-Cloud Setup](#Data-Cloud-Setup)
+- [Data-Cloud Configuration](#Data-Cloud-Configuration)
 - [Installation](#Installation)
 - [Post-Deployment Instructions](#Post-Deployment-Instructions)
 - [Optional installation instructions](#Optional-installation-instructions)
@@ -16,8 +16,8 @@ Table of contents
 [1 - Installation Guide.docx](https://docs.google.com/document/d/1CEHMg96Ba2hVMtoYgfuVbRBUbRL4r5gy/edit)
 # Salesforce Package Installation
 [2 - Salesforce Package Installation](https://docs.google.com/document/d/1pN0kMzzcOs82dpWgc76BpxZ2qEVSPStF/edit)
-# Data-Cloud Setup
-[Data-Cloud Setup](https://docs.google.com/document/d/1DbItmRZ7YIt434qpb95g-G7DdkyGgYno)
+# Data-Cloud Configuration
+[Data-Cloud Configuration](https://docs.google.com/document/d/18pIB7oYDE-9EJNZyaVQAomfM3pRodaVW/edit#heading=h.gjdgxs)
 # Installation
 
 ### Requirements
