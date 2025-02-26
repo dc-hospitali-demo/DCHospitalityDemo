@@ -8,7 +8,7 @@ Table of contents
 - [Installation Guide.docx](#Pre-Deployment-Instructions)
 - [Salesforce Package Installation](#Salesforce-Package-Installation)
 - [Data-Cloud Configuration](#Data-Cloud-Configuration)
-- [Installation](#Installation)
+- [Commerce Cloud Configuration](#Commerce-Cloud-Configuration)
 - [Post-Deployment Instructions](#Post-Deployment-Instructions)
 - [Optional installation instructions](#Optional-installation-instructions)
 
@@ -18,7 +18,8 @@ Table of contents
 [2 - Salesforce Package Installation](https://docs.google.com/document/d/1pN0kMzzcOs82dpWgc76BpxZ2qEVSPStF/edit)
 # Data-Cloud Configuration
 [Data-Cloud Configuration](https://docs.google.com/document/d/18pIB7oYDE-9EJNZyaVQAomfM3pRodaVW/edit#heading=h.gjdgxs)
-# Installation
+# Commerce Cloud Configuration
+[Commerce Cloud Configuration](https://docs.google.com/document/d/1h0OwE5A1WzPKRNt2YOEXK-ZfOqxQq4cz/edit)
 
 ### Requirements
 #### Environment
