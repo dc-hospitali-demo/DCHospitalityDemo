@@ -39,6 +39,7 @@ To support the Sunshine Resorts app, you can either create a new Salesforce Org 
    - Commerce Cloud
    - Marketing Cloud
    - MuleSoft (Optional)
+     
 **Features Required**
    - Service Agent
    - Einstein Agent
