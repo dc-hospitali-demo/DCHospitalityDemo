@@ -12,7 +12,7 @@ Table of contents
 - [Optional installation instructions](#Optional-installation-instructions)
 
 # Pre-Deployment Instructions
-[1 - Installation Guide.docx](https://infosystechnologies.sharepoint.com/:w:/r/sites/Salesforce862-DataCloud/Shared%20Documents/Auto%20Cloud/Package%20Deployment%20Folder/Installation%20Guides/1%20-%20Installation%20Guide.docx?d=w80c281aaf7cb408db979da4a61c21a41&csf=1&web=1&e=MI34Hp)
+[1 - Installation Guide.docx](https://docs.google.com/document/d/1CEHMg96Ba2hVMtoYgfuVbRBUbRL4r5gy/edit)
 # Data-Cloud Setup
 [Data-Cloud Setup](https://docs.google.com/document/d/1DbItmRZ7YIt434qpb95g-G7DdkyGgYno)
 # Installation
