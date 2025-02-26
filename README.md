@@ -27,16 +27,27 @@ Table of contents
 
 ### Requirements
 #### Environment
+To support the Sunshine Resorts app, you can either create a new Salesforce Org or use an existing one, provided it includes the following features and licenses:
+**Requirements
+   - Licenses Required
+   - Data Cloud
+   - Loyalty Cloud
+   - Sales Cloud
+   - Service Cloud
+   - Experience
+   - Commerce Cloud
+   - Marketing Cloud
+   - MuleSoft (Optional)
+**Features Required
+   - Service Agent
+   - Einstein Agent
+   - Copilot
+   - Prompt Builder
+   - Agent Force
+   - Real-time
+   - Code Builder (Optional)
 
-The Sunshine Trail Resorts app requires licenses for the following features:
-- Data Cloud
-- Agents
-- Prompt Builder
-- Experience Cloud
-- Marketing Cloud to Send SMS
-
-:warning: Important
-Start from a brand-new environment to avoid conflicts with previous work you may have done.
+⚠️ Important Note: Existing Trailheads playgrounds cannot be used
 
 ### Salesforce CLI
 [Install the Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) or check that your installed CLI version is greater than 2.56.7 by running sf -v in a terminal.
