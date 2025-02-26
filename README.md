@@ -5,25 +5,25 @@ The Sunshine Trail app showcases **Data Cloud**, **Agents** and **Prompts**.
 
 Table of contents
 =======================
-- [Installation Guide.docx](#Pre-Deployment-Instructions)
-- [Salesforce Package Installation](#Salesforce-Package-Installation)
-- [Data-Cloud Configuration](#Data-Cloud-Configuration)
-- [Commerce Cloud Configuration](#Commerce-Cloud-Configuration)
-- [Connect and Create Sample data](#Connect-and-Create-Sample-data)
-- [Finish Configuration](#Finish-Configuration)
+- [1. Installation Guide.docx](#Pre-Deployment-Instructions)
+- [2. Salesforce Package Installation](#Salesforce-Package-Installation)
+- [3. Data-Cloud Configuration](#Data-Cloud-Configuration)
+- [4. Commerce Cloud Configuration](#Commerce-Cloud-Configuration)
+- [5. Connect and Create Sample data](#Connect-and-Create-Sample-data)
+- [6. Finish Configuration](#Finish-Configuration)
 
 # Pre-Deployment Instructions
-[Installation Guide.docx](https://docs.google.com/document/d/1CEHMg96Ba2hVMtoYgfuVbRBUbRL4r5gy/edit)
+[1. Installation Guide.docx](https://docs.google.com/document/d/1CEHMg96Ba2hVMtoYgfuVbRBUbRL4r5gy/edit)
 # Salesforce Package Installation
-[Salesforce Package Installation](https://docs.google.com/document/d/1pN0kMzzcOs82dpWgc76BpxZ2qEVSPStF/edit)
+[2. Salesforce Package Installation](https://docs.google.com/document/d/1pN0kMzzcOs82dpWgc76BpxZ2qEVSPStF/edit)
 # Data-Cloud Configuration
-[Data-Cloud Configuration](https://docs.google.com/document/d/18pIB7oYDE-9EJNZyaVQAomfM3pRodaVW/edit#heading=h.gjdgxs)
+[3. Data-Cloud Configuration](https://docs.google.com/document/d/18pIB7oYDE-9EJNZyaVQAomfM3pRodaVW/edit#heading=h.gjdgxs)
 # Commerce Cloud Configuration
-[Commerce Cloud Configuration](https://docs.google.com/document/d/1h0OwE5A1WzPKRNt2YOEXK-ZfOqxQq4cz/edit)
+[4. Commerce Cloud Configuration](https://docs.google.com/document/d/1h0OwE5A1WzPKRNt2YOEXK-ZfOqxQq4cz/edit)
 # Connect and Create Sample data
-[Connect and Create Sample data](https://docs.google.com/document/d/1sBY1Ij7zMJq8H7b8c2rbdQvcYSXwaEyj/edit)
+[5. Connect and Create Sample data](https://docs.google.com/document/d/1sBY1Ij7zMJq8H7b8c2rbdQvcYSXwaEyj/edit)
 # Finish Configuration
-[Finish Configuration](https://docs.google.com/document/d/1CCTTkuCF56KYajjnVsvAzvvKbEHP5uDu/edit)
+[6. Finish Configuration](https://docs.google.com/document/d/1CCTTkuCF56KYajjnVsvAzvvKbEHP5uDu/edit)
 
 ### Requirements
 #### Environment
