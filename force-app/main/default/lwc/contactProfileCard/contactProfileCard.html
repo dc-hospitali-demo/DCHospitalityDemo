@@ -1,0 +1,81 @@
+<template>
+    <article class="slds-card profile-card">
+    <div class="slds-card__body slds-card__body_inner">
+       
+    <c-error-panel
+    lwc:if={error}
+    errors={error}
+    friendly-message="Failed to retrieve contact profile"
+    ></c-error-panel>
+    <template lwc:elseif={hasData}>
+    <!-- Avatar, name and location -->
+    <lightning-card>
+    <!-- <div class="custom-card"> -->
+    <div class="slds-grid slds-wrap">
+        <div class="slds-align-middle">
+            <img
+                class="profile-photo"
+                src={photoURL}
+                alt="Profile picture"
+            />
+        </div>
+        <div class="slds-align-middle slds-p-left_medium">
+            <h1 class="slds-text-heading_medium">
+                <strong>{name}</strong> 
+            </h1>
+            <h2>{mailingCity}, {mailingState}</h2>
+        </div>
+    </div>
+    <hr>
+    <lightning-record-view-form
+        record-id={recordId}
+        object-api-name="Contact">
+        <!-- 2 column layout -->
+        <div class="slds-grid slds-wrap slds-border_bottom slds-p-vertical_small">
+            <div class="slds-col slds-size_1-of-2 custom-class">
+                <span class="bold-text" ><lightning-output-field field-name="External_Id__c">
+                </lightning-output-field></span>
+            
+                <span class="bold-text" ><lightning-output-field field-name="MobilePhone">
+                </lightning-output-field></span>
+                
+                <span class="bold-text" ><lightning-output-field
+                    field-name="Birthdate">
+                </lightning-output-field></span>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <span class="bold-text" ><lightning-output-field
+                    field-name="Preferred_Name__c">
+                </lightning-output-field></span>
+
+                <span class="bold-text" ><lightning-output-field field-name="Email">
+                </lightning-output-field></span>
+
+                <span class="bold-text" ><lightning-output-field field-name="Anniversary__c">
+                </lightning-output-field></span>
+            </div> 
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+               <b> <h2>Address </h2></b>
+                <h2>{mailingStreet},{mailingCity},{mailingState},{mailingPostalCode}</h2>
+            </div>
+    </lightning-record-view-form>
+</lightning-card>
+    <div class="custom-hr">
+    </div>
+
+    <!--Member Traits Details Start-->
+    <template if:true={bookingExpierenceTypeValues}>
+        <lightning-card title="Member Traits">
+        <div class="member-traits-values">
+            <template for:each={bookingExpierenceTypeValues} for:item="types">
+                <div key={types} class="mtoval">{types}</div>
+            </template>
+         </div>  
+         </lightning-card>  
+         </template>
+        <!--Member Traits Details End-->
+    </template>
+    </div>
+    </article>
+    </template>

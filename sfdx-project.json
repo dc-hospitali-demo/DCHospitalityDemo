@@ -1,0 +1,18 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "definitionFile": "config/project-scratch-def.json",
+      "package": "ST-Site-Pckg-5",
+      "versionDescription": "Digital Sites"
+    }
+  ],
+  "name": "Sunshine Trails Hospitality",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "packageAliases": {
+    "ST-Site-Pckg-5": "0Ho7y0000000JPFCA2"
+  }
+}

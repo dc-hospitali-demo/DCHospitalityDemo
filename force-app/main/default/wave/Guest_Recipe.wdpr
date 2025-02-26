@@ -1,0 +1,428 @@
+{
+  "version" : "63.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "AccountId", "LastName", "FirstName", "Salutation", "Name", "MobilePhone", "Email" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Contact",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Contact"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Guest",
+          "name" : "Guest",
+          "folderName" : "SharedApp"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "MembershipNumber", "ContactId", "ProgramId", "EnrollmentDate", "MemberStatus" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "LoyaltyProgramMember",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "LoyaltyProgramMember"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET3", "LOAD_DATASET4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "ProgramId" ],
+        "rightQualifier" : "LPrg",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "LoyaltyProgram",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "LoyaltyProgram"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FILTER0" : {
+      "action" : "filter",
+      "sources" : [ "JOIN3" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "LPrg.Name",
+          "operator" : "EQUAL",
+          "operands" : [ "Cirrus Loyalty", "Cumulus Insider", "NTO Loyalty Program", "NTO Referral Program" ]
+        } ]
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "FILTER0", "LOAD_DATASET5" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "LMemTier.LoyaltyTierId", "LMemTier.LoyaltyMemberId", "LMemTier.LTier.Id", "LMemCurr.Id" ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "LMemCurr",
+        "rightKeys" : [ "LoyaltyMemberId" ]
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "LoyaltyMemberId", "TotalPointsAccrued", "TotalPointsRedeemed", "TotalPointsExpired", "PointsBalance" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "LoyaltyMemberCurrency",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "LoyaltyMemberCurrency"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET0", "JOIN1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "LMemCurr.Id", "LMemCurr.ProgramId", "LMemCurr.ContactId", "LMemCurr.LPrg.Id", "LMemCurr.LMemCurr.Id", "LMemCurr.LMemCurr.LoyaltyMemberId" ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "LMemCurr",
+        "rightKeys" : [ "ContactId" ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "JOIN2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Points_to_Next_Tier",
+          "label" : "Points to Next Tier",
+          "formulaExpression" : "case when (\"LMemCurr.LMemCurr.PointsBalance\" is not null and \"LMemCurr.LMemCurr.PointsBalance\" <= 7500) then (7501 - \"LMemCurr.LMemCurr.PointsBalance\") when (\"LMemCurr.LMemCurr.PointsBalance\" is not null and \"LMemCurr.LMemCurr.PointsBalance\" > 7500 and \"LMemCurr.LMemCurr.PointsBalance\" <= 15000) then (15001 - \"LMemCurr.LMemCurr.PointsBalance\")\r\nwhen (\"LMemCurr.LMemCurr.PointsBalance\" is not null and \"LMemCurr.LMemCurr.PointsBalance\" > 15000) then 0 end",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Next_Tier",
+          "label" : "Next Tier",
+          "formulaExpression" : "case when (\"LMemCurr.LMemCurr.PointsBalance\" is not null and \"LMemCurr.LMemCurr.PointsBalance\" <= 7500) then 'Gold' when (\"LMemCurr.LMemCurr.PointsBalance\" is not null and \"LMemCurr.LMemCurr.PointsBalance\" > 7500 and \"LMemCurr.LMemCurr.PointsBalance\" <= 15000) then 'Platinum'\r\nwhen (\"LMemCurr.LMemCurr.PointsBalance\" is not null and \"LMemCurr.LMemCurr.PointsBalance\" > 15000) then 'Highest Tier' end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "JOIN0", "JOIN4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "LMemTier",
+        "rightKeys" : [ "LoyaltyMemberId" ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "LoyaltyTierId", "LoyaltyMemberId" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "LoyaltyMemberTier",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "LoyaltyMemberTier"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET6", "LOAD_DATASET7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "LoyaltyTierId" ],
+        "rightQualifier" : "LTier",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "LoyaltyTier",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "LoyaltyTier"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "Contact",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT0" : {
+        "label" : "Register Guest Dataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252,
+        "left" : 1092
+      },
+      "LOAD_DATASET3" : {
+        "label" : "LoyaltyProgramMember",
+        "type" : "LOAD_DATASET",
+        "top" : 251.60000000000002,
+        "left" : 112.19999999999999,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN0" : {
+        "label" : "LookUp Loyalty Program",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 251.60000000000002,
+        "left" : 252.2
+      },
+      "LOAD_DATASET4" : {
+        "label" : "LoyaltyProgram",
+        "type" : "LOAD_DATASET",
+        "top" : 391.6,
+        "left" : 112.30000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER0" : {
+        "label" : "Filter NTO Loyalty Program",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 252,
+        "left" : 532
+      },
+      "JOIN1" : {
+        "label" : "Join Loyalty Member Currency",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 672
+      },
+      "LOAD_DATASET5" : {
+        "label" : "LoyaltyMemberCurrency",
+        "type" : "LOAD_DATASET",
+        "top" : 531.9,
+        "left" : 112.30000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN2" : {
+        "label" : "Join Contact",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 812
+      },
+      "TRANSFORM0" : {
+        "label" : "Points Calculation",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 952,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Points to Next Tier"
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Next Tier"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "FORMULA1"
+        } ]
+      },
+      "JOIN3" : {
+        "label" : "Join Loyalty Member Tier",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 392
+      },
+      "LOAD_DATASET6" : {
+        "label" : "LoyaltyMemberTier",
+        "type" : "LOAD_DATASET",
+        "top" : 671.9,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN4" : {
+        "label" : "Join Loyalty Tier",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 672,
+        "left" : 253.3
+      },
+      "LOAD_DATASET7" : {
+        "label" : "LoyaltyTier",
+        "type" : "LOAD_DATASET",
+        "top" : 811.9,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "TRANSFORM0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN3",
+      "target" : "FILTER0"
+    }, {
+      "source" : "FILTER0",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET0",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN1",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN2",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "JOIN4"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

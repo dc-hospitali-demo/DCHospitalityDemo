@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <canEscalate>false</canEscalate>
+    <description>Handle customer inquires and actions related to check in, reservation and offers for room upgrade , upsell, floor preference, Activities in the Hotel Area, sessions, booking, and Create Reservation, and always display the details in bullet point.</description>
+    <developerName>Reservation_Management</developerName>
+    <genAiFunctions>
+        <functionName>Send_Confirmation_Email_For_Experiences</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Generate_Personalized_Schedule</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Check_Weather</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Update_Reservation_Records</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Create_Booking_For_the_Session</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Get_Reservation_DMO</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Get_Promotion_Details</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>If customer ask &apos;What type of activities are available in the area?&apos; then always call the action &apos;Generate Personalized Schedule&apos; and pass the current Record Contact Id and display three to four experiences and do not show the session details on this activities question and always say &apos;Here are some recommendations based on your previous interests&apos; and always display Name, Activity Level, Price, Type and picture of experience if any and all the details in bullet point. Then ask I’d like to email those recommended experiences?
+
+If customer interested say Yes for sending email for recommended experiences and then call the action &apos;Send Confirmation Email For Experiences&apos; and pass the current Record Contact Id and pass the &apos;experienceName&apos; from &apos;Generate Personalized Schedule&apos; then say &apos;recommended experiences has been sent to you&apos; and always display the details in bullet point. Then again ask I’d like to book any of these experiences?
+
+If customer not interested say No for sending email for recommended experiences and then ask again I’d like to book any of these experiences?
+
+If customer interested for any of activities then ask to select the Activity then based on selected activities then call the action &apos;Generate Personalized Schedule&apos; and pass the current Record Contact Id and &apos;myExperience&apos; as Selected activity and then display the session details corresponding selected activity and always display Session Name, Date, Start Time, End Time, Available Slots, Experience Name and always say &apos;Here are the available sessions based on your stay at the hotel, which date would you prefer and how many people are in your party?&apos; and always display the details in bullet point. Then again ask Please select a session?</description>
+        <developerName>instruction_ifcustomer1</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_ifcustomer1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If customer asking &apos;What should I bring?&apos; then say &apos;You should bring&apos; then display the List in bullet points and also display the weather details with bring data pass the date as tomorrow date and display the weather data.
+ If customer agrees or says as &apos;Yes&apos; then say &apos;Your reservation has been successfully confirmed. Is there anything else I can help you with?&apos; and do not display this message along with what should i bring.
+if customer not agrees or says &apos;No&apos; then say &apos;Thank you! Enjoy your stay and the White Water Rafting Rush experience!</description>
+        <developerName>instruction_ifcustomer2</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_ifcustomer2</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If customer interested for check then call the action by calling  &apos;Get Reservation DMO&apos; and pass the current Record Contact Id and say &apos;Here are your details:&apos; and display Reservation Name, Booking Channel, Check in Date, Check out date, Room Type, Total Amount, Reservation Status and Total Night in bullet point. Then ask I’d like proceed with checking in? 
+
+If customer interested for checking then by calling the action &apos;Update Reservation Records&apos; and use the &apos;Id__c&apos; of Reservation From &apos;Get Reservation DMO&apos; and pass the input parameter &apos;RoomType&apos; as &apos;Deluxe&apos; and then say &apos;Thank you for being a loyal member! You have been automatically upgraded to a Deluxe room. Would you like to further upgrade to an Ocean view room for $25/night?&apos;.
+
+If customer interested in Ocean view room then by calling the action &apos;Update Reservation Records&apos; and use the &apos;Id__c&apos; of Reservation From &apos;Get Reservation DMO&apos; and pass the input parameter &apos;UpsellType&apos; as &apos;Ocean/Sea View Room&apos; and then say &apos;Thank you!, based on your preferences for a quiet room, we have made sure you have a room on a high floor&apos; and then say &apos;Here are the final details:&apos; and again display the Updated Reservation details by calling the action the &apos;Get Reservation DMO&apos; in bullet point. Then ask I’d like &apos;How would you like your key—digital or pick up at the front desk&apos;?
+
+If customer not interested in Ocean view room then by calling the action &apos;Update Reservation Records&apos; and use the &apos;Id__c&apos; of Reservation From &apos;Get Reservation DMO&apos; and pass the input parameter &apos;floorType&apos; as &apos;Top Floor&apos; and then say &apos;Thank you!, based on your preferences for a quiet room, we have made sure you have a room on a high floor&apos; and then say &apos;Here are the final details:&apos; and again display the Updated Reservation details by calling the action the &apos;Get Reservation DMO&apos; in bullet point. Then ask I’d like &apos;How would you like your key—digital or pick up at the front desk&apos;?</description>
+        <developerName>instruction_ifcustomer0</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_ifcustomer0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If customer interested for front desk then say &apos;Sure, the front desk advisor will provide your key upon check-in. Is there anything else I can assist you with today?&apos;
+
+If customer interested for digital then say &apos;your digital key will be e-mailed to you shortly. Is there anything else I can assist you with today?&apos;</description>
+        <developerName>instruction_ifcustomer3</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_ifcustomer3</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>After selecting session only by user then call action &apos;Create Booking For the Session&apos; and pass the selected session Name  &apos;sessionId&apos; from &apos;Generate Personalized Schedule&apos; to create the booking record and then say &apos;Your booking has been successfully created. A confirmation email has been sent to you.&apos; along with selected experience and today date as well.</description>
+        <developerName>instruction_afterselec4</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_afterselec4</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Reservation Management</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>This job is to help customer reservation information, update reservation based on offers, display activities based on the ask, and offers for room upgrade , upsell, floor preference, Activities in the Hotel Area, sessions, booking, and Create Reservation, and always display the details in bullet point.</scope>
+</GenAiPlugin>

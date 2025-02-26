@@ -1,0 +1,32 @@
+{
+  "orgName": "Demo company",
+  "edition": "Developer",
+  "hasSampleData": false,
+    "features": [
+        "Communities",
+        "ServiceCloud",
+        "LiveAgent",
+        "Sites",
+        "FlowSites",
+        "EnableSetPasswordInApi"
+    ],
+    "settings": {
+        "communitiesSettings": {
+            "enableNetworksEnabled": true
+        },
+        "experienceBundleSettings": {
+            "enableExperienceBundleMetadata": true
+        },
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        },
+        "liveAgentSettings": { "enableLiveAgent": true },
+        "mobileSettings": {
+            "enableS1EncryptedStoragePref2": false
+        },
+        "omniChannelSettings": { "enableOmniChannel": true },
+        "userEngagementSettings": {
+            "enableShowSalesforceUserAssist": false
+        }
+    }
+}
