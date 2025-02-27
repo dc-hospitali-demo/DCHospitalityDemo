@@ -26,7 +26,7 @@ Table of contents
 # Commerce Cloud Configuration
 [4. Commerce Cloud Configuration](https://docs.google.com/document/d/1h0OwE5A1WzPKRNt2YOEXK-ZfOqxQq4cz/edit)
 # Connect and Create Sample data
-[5. Connect and Create Sample data](https://docs.google.com/document/d/1sBY1Ij7zMJq8H7b8c2rbdQvcYSXwaEyj/edit)
+[5. Connect and Create Sample data](https://docs.google.com/document/d/1Cp3Ee3sOmEO8pwZjTu_Se67B2hMm0ZBu/edit)
 # Finish Configuration
 [6. Finish Configuration](https://docs.google.com/document/d/1CCTTkuCF56KYajjnVsvAzvvKbEHP5uDu/edit)
 
